@@ -64,7 +64,7 @@ ensure_procfile "$start_method" "$build_dir"
 warn_start "$start_method"
 
 ####### Install Compass
-status "Installing Compass"
+head "Installing Compass"
 if [ "$STACK" == "cedar-14" ]; then
   export GEM_HOME=$cache_dir/ruby/.gem/ruby/2.2.0
 else
@@ -94,7 +94,7 @@ fi
   if [ -f $build_dir/grunt.js ] || [ -f $build_dir/Gruntfile.js ] || [ -f $build_dir/gruntfile.js ] || [ -f $build_dir/Gruntfile.coffee ]; then
     # get the env vars
     if [ -d "$env_dir" ]; then
-      status "Exporting config vars to environment"
+      head "Exporting config vars to environment"
       export_env_dir $env_dir
     fi
 
@@ -104,7 +104,7 @@ fi
     echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
     $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
 
-    status "Pruning dev dependencies"
+    head "Pruning dev dependencies"
     npm prune --production 2>&1 | indent
 
   else

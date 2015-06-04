@@ -114,6 +114,9 @@ fi
 
 ####### Finalize the build
 
+echo "=====> Writing out SOURCE_VERSION to .source_version ($SOURCE_VERSION)"
+echo $SOURCE_VERSION > $build_dir/.source_version
+
 head "Finalizing build"
 write_profile
 write_export
